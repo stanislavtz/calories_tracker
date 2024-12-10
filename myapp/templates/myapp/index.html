@@ -41,10 +41,10 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Carbohydrates</th>
-                        <th scope="col">Proteins</th>
-                        <th scope="col">Fats</th>
-                        <th scope="col">Calories</th>
+                        <th scope="col" class="text-end">Carbohydrates</th>
+                        <th scope="col" class="text-end">Proteins</th>
+                        <th scope="col" class="text-end">Fats</th>
+                        <th scope="col" class="text-end">Calories</th>
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -52,20 +52,20 @@
                             <tr>
                                 <th scope="row">{{ consume.curr_number }}</th>
                                 <td>{{ consume.consumed_food.name }}</td>
-                                <td>{{ consume.consumed_food.carbs }}</td>
-                                <td>{{ consume.consumed_food.proteins }}</td>
-                                <td>{{ consume.consumed_food.fats }}</td>
-                                <td>{{ consume.consumed_food.calories }}</td>
+                                <td class="text-end">{{ consume.consumed_food.carbs|floatformat:2 }} g</td>
+                                <td class="text-end">{{ consume.consumed_food.proteins|floatformat:2 }} g</td>
+                                <td class="text-end">{{ consume.consumed_food.fats|floatformat:2 }} g</td>
+                                <td class="text-end">{{ consume.consumed_food.calories|floatformat:2 }} g</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                     <tfoot class="table-group-divider">
                         <th scope="row"></th>
                         <td class="text-left">TOTAL</td>
-                        <td>{{ total_carbs }}</td>
-                        <td>{{ total_proteins }}</td>
-                        <td>{{ total_fats }}</td>
-                        <td>{{ total_calories }}</td>
+                        <td class="text-end">{{ total_carbs|floatformat:2 }} g</td>
+                        <td class="text-end">{{ total_proteins|floatformat:2 }} g</td>
+                        <td class="text-end">{{ total_fats|floatformat:2 }} g</td>
+                        <td class="text-end">{{ total_calories|floatformat:2 }} g</td>
                     </tfoot>
                   </table>
             </div>

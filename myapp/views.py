@@ -19,9 +19,9 @@ def index(request):
     for i in range(len(user_consumed_food)):
         user_consumed_food[i].curr_number = i+1
 
-    total_carbs = round(sum(f.consumed_food.carbs for f in user_consumed_food), 2)
-    total_proteins = round(sum(f.consumed_food.proteins for f in user_consumed_food), 2)
-    total_fats = round(sum(f.consumed_food.fats for f in user_consumed_food), 2)
+    total_carbs = sum(f.consumed_food.carbs for f in user_consumed_food)
+    total_proteins = sum(f.consumed_food.proteins for f in user_consumed_food)
+    total_fats = sum(f.consumed_food.fats for f in user_consumed_food)
     total_calories = sum(f.consumed_food.calories for f in user_consumed_food)
 
     context = {
