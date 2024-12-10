@@ -60,14 +60,16 @@
                         {% endfor %}
                     </tbody>
                     <tfoot class="table-group-divider">
-                        <th scope="row"></th>
-                        <td class="text-left">TOTAL</td>
-                        <td class="text-end">{{ total_carbs|floatformat:2 }} g</td>
-                        <td class="text-end">{{ total_proteins|floatformat:2 }} g</td>
-                        <td class="text-end">{{ total_fats|floatformat:2 }} g</td>
-                        <td class="text-end">{{ total_calories|floatformat:2 }} g</td>
+                        <tr>
+                            <th scope="row"></th>
+                            <td class="text-left">TOTAL</td>
+                            <td class="text-end">{{ total_carbs|floatformat:2 }} g</td>
+                            <td class="text-end">{{ total_proteins|floatformat:2 }} g</td>
+                            <td class="text-end">{{ total_fats|floatformat:2 }} g</td>
+                            <td class="text-end">{{ total_calories|floatformat:2 }} g</td>
+                        </tr>
                     </tfoot>
-                  </table>
+                </table>
             </div>
         </div>
 
