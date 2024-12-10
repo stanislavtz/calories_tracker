@@ -1,11 +1,16 @@
-<h1>Food List</h1>
+{% extends "myapp/base.html" %}
+{% block title %}Dashboard{% endblock title %}
 
-<form method="POST">
-    {% csrf_token %}
-    {% for food in foods %}
-        <div>
-            <input type="checkbox" name="{{ food.name }}" id="{{ food.id }}">
-            <label for="{{ food.id }}">{{ food.name }}</label>
-        </div>
-    {% endfor %}
-</form>
+{% block content %}
+    <h1>Food List</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {% for food in foods %}
+            <div>
+                <input type="checkbox" name="{{ food.name }}" id="{{ food.id }}">
+                <label for="{{ food.id }}">{{ food.name }}</label>
+            </div>
+        {% endfor %}
+    </form>
+{% endblock content %}
