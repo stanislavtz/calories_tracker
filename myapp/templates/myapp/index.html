@@ -1,1 +1,11 @@
-<h1>Hello World!</h1>
+<h1>Food List</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {% for food in foods %}
+        <div>
+            <input type="checkbox" name="{{ food.name }}" id="{{ food.id }}">
+            <label for="{{ food.id }}">{{ food.name }}</label>
+        </div>
+    {% endfor %}
+</form>
