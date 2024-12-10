@@ -1,16 +1,29 @@
 {% extends "myapp/base.html" %}
+
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
-    <h1>Food List</h1>
-
-    <form method="POST">
-        {% csrf_token %}
-        {% for food in foods %}
-            <div>
-                <input type="checkbox" name="{{ food.name }}" id="{{ food.id }}">
-                <label for="{{ food.id }}">{{ food.name }}</label>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-7">
+                <h1>Food List</h1>
             </div>
-        {% endfor %}
-    </form>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7">
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="foods" class="me-2">Choose a food:</label>
+                    <select name="foods" id="foods">
+                    <option value="none">none</option>
+                    {% for food in foods %}
+                        <option value="{{ food.name }}">{{ food.name }}</option>
+                    {% endfor %}
+                    </select>
+                </form>
+            </div>
+        </div>
+
+    </div>
 {% endblock content %}
