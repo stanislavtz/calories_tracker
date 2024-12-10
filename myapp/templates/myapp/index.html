@@ -41,10 +41,10 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col" class="text-end">Carbohydrates</th>
-                        <th scope="col" class="text-end">Proteins</th>
-                        <th scope="col" class="text-end">Fats</th>
-                        <th scope="col" class="text-end">Calories</th>
+                        <th scope="col" class="text-end">Carbohydrates (g)</th>
+                        <th scope="col" class="text-end">Proteins (g)</th>
+                        <th scope="col" class="text-end">Fats (g)</th>
+                        <th scope="col" class="text-end">Calories (Kcal)</th>
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -52,21 +52,21 @@
                             <tr>
                                 <th scope="row">{{ consume.curr_number }}</th>
                                 <td>{{ consume.consumed_food.name }}</td>
-                                <td class="text-end">{{ consume.consumed_food.carbs|floatformat:2 }} g</td>
-                                <td class="text-end">{{ consume.consumed_food.proteins|floatformat:2 }} g</td>
-                                <td class="text-end">{{ consume.consumed_food.fats|floatformat:2 }} g</td>
-                                <td class="text-end">{{ consume.consumed_food.calories|floatformat:2 }} g</td>
+                                <td class="text-end">{{ consume.consumed_food.carbs|floatformat:2 }}</td>
+                                <td class="text-end">{{ consume.consumed_food.proteins|floatformat:2 }}</td>
+                                <td class="text-end">{{ consume.consumed_food.fats|floatformat:2 }}</td>
+                                <td class="text-end">{{ consume.consumed_food.calories }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                     <tfoot class="table-group-divider">
                         <tr>
                             <th scope="row"></th>
-                            <td class="text-left">TOTAL</td>
-                            <td class="text-end">{{ total_carbs|floatformat:2 }} g</td>
-                            <td class="text-end">{{ total_proteins|floatformat:2 }} g</td>
-                            <td class="text-end">{{ total_fats|floatformat:2 }} g</td>
-                            <td class="text-end">{{ total_calories|floatformat:2 }} g</td>
+                            <td class="text-left fw-bold">TOTAL</td>
+                            <td class="text-end fw-bold">{{ total_carbs|floatformat:2 }}g</td>
+                            <td class="text-end fw-bold">{{ total_proteins|floatformat:2 }} g</td>
+                            <td class="text-end fw-bold">{{ total_fats|floatformat:2 }} g</td>
+                            <td class="text-end fw-bold">{{ total_calories }} Kcal</td>
                         </tr>
                     </tfoot>
                 </table>
