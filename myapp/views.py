@@ -24,13 +24,18 @@ def index(request):
     total_fats = sum(f.consumed_food.fats for f in user_consumed_food)
     total_calories = sum(f.consumed_food.calories for f in user_consumed_food)
 
+    max_calories = 2000
+    percent_calories = total_calories * 100 / max_calories
+
     context = {
         "foods": foods,
         "consumes": user_consumed_food,
         "total_carbs": total_carbs,
         "total_proteins": total_proteins,
         "total_fats": total_fats,
-        "total_calories": total_calories
+        "total_calories": total_calories,
+        "max_calories": max_calories,
+        "percent": percent_calories
     }
 
     return render(request, "myapp/index.html", context)

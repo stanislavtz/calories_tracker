@@ -34,6 +34,20 @@
             </div>
         </div>
 
+        <div class="row mt-5">
+            <div class="col-md-7">
+                <h3>Calories progress</h3>
+                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{ total_calories }}" aria-valuemin="0" aria-valuemax="{{ max_calories }}" style="height: 24px">
+                    {% if percent <= 90 %}
+                        <div class="progress-bar" style="width: {{ percent }}%">{{ total_calories }} Kcal</div>
+                    {% else %}
+                        <div class="progress-bar bg-danger" style="width: {{ percent }}%">{{ total_calories }} Kcal</div>
+                    {% endif %}
+                </div>
+                <hr>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-7">
                 <table class="table">
@@ -63,7 +77,7 @@
                         <tr>
                             <th scope="row"></th>
                             <td class="text-left fw-bold">TOTAL</td>
-                            <td class="text-end fw-bold">{{ total_carbs|floatformat:2 }}g</td>
+                            <td class="text-end fw-bold">{{ total_carbs|floatformat:2 }} g</td>
                             <td class="text-end fw-bold">{{ total_proteins|floatformat:2 }} g</td>
                             <td class="text-end fw-bold">{{ total_fats|floatformat:2 }} g</td>
                             <td class="text-end fw-bold">{{ total_calories }} Kcal</td>
