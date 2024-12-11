@@ -4,88 +4,89 @@
 
 {% block content %}
     <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-7">
-                <h1>Food List</h1>
-                <hr>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-7">
-                <form method="POST">
-                    {% csrf_token %}
-                    <label for="foods" class="me-2">Choose a food:</label>
-                    <select name="foods" id="foods">
-                    <option value="none">none</option>
-                    {% for food in foods %}
-                        <option value="{{ food.name }}">{{ food.name }}</option>
-                    {% endfor %}
-                    </select>
-                    <button type="submit" class="btn btn-primary ms-2">Add food</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-md-7">
-                <h1>Added Food</h1>
-                <hr>
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-md-7">
-                <h3>Calories progress</h3>
-                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{ total_calories }}" aria-valuemin="0" aria-valuemax="{{ max_calories }}" style="height: 24px">
-                    {% if percent <= 90 %}
-                        <div class="progress-bar" style="width: {{ percent }}%">{{ total_calories }} Kcal</div>
-                    {% else %}
-                        <div class="progress-bar bg-danger" style="width: {{ percent }}%">{{ total_calories }} Kcal</div>
-                    {% endif %}
+        <div class="ms-5 mb-5">
+            <div class="row mt-5">
+                <div class="col-md-7">
+                    <h1>Food List</h1>
+                    <hr>
                 </div>
-                <hr>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-7">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col" class="text-end">Carbohydrates (g)</th>
-                        <th scope="col" class="text-end">Proteins (g)</th>
-                        <th scope="col" class="text-end">Fats (g)</th>
-                        <th scope="col" class="text-end">Calories (Kcal)</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        {% for consume in consumes %}
-                            <tr>
-                                <th scope="row">{{ consume.curr_number }}</th>
-                                <td>{{ consume.consumed_food.name }}</td>
-                                <td class="text-end">{{ consume.consumed_food.carbs|floatformat:2 }}</td>
-                                <td class="text-end">{{ consume.consumed_food.proteins|floatformat:2 }}</td>
-                                <td class="text-end">{{ consume.consumed_food.fats|floatformat:2 }}</td>
-                                <td class="text-end">{{ consume.consumed_food.calories }}</td>
-                            </tr>
+            <div class="row">
+                <div class="col-md-7">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <label for="foods" class="me-2">Choose a food:</label>
+                        <select name="foods" id="foods">
+                        <option value="none">none</option>
+                        {% for food in foods %}
+                            <option value="{{ food.name }}">{{ food.name }}</option>
                         {% endfor %}
-                    </tbody>
-                    <tfoot class="table-group-divider">
+                        </select>
+                        <button type="submit" class="btn btn-primary ms-2">Add food</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-7">
+                    <h1>Added Food</h1>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-7">
+                    <h3>Calories progress</h3>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{ total_calories }}" aria-valuemin="0" aria-valuemax="{{ max_calories }}" style="height: 24px">
+                        {% if percent <= 90 %}
+                            <div class="progress-bar" style="width: {{ percent }}%">{{ total_calories }} Kcal</div>
+                        {% else %}
+                            <div class="progress-bar bg-danger" style="width: {{ percent }}%">{{ total_calories }} Kcal</div>
+                        {% endif %}
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-7">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <th scope="row"></th>
-                            <td class="text-left fw-bold">TOTAL</td>
-                            <td class="text-end fw-bold">{{ total_carbs|floatformat:2 }} g</td>
-                            <td class="text-end fw-bold">{{ total_proteins|floatformat:2 }} g</td>
-                            <td class="text-end fw-bold">{{ total_fats|floatformat:2 }} g</td>
-                            <td class="text-end fw-bold">{{ total_calories }} Kcal</td>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col" class="text-end">Carbohydrates (g)</th>
+                            <th scope="col" class="text-end">Proteins (g)</th>
+                            <th scope="col" class="text-end">Fats (g)</th>
+                            <th scope="col" class="text-end">Calories (Kcal)</th>
                         </tr>
-                    </tfoot>
-                </table>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            {% for consume in consumes %}
+                                <tr>
+                                    <th scope="row">{{ consume.curr_number }}</th>
+                                    <td>{{ consume.consumed_food.name }}</td>
+                                    <td class="text-end">{{ consume.consumed_food.carbs|floatformat:2 }}</td>
+                                    <td class="text-end">{{ consume.consumed_food.proteins|floatformat:2 }}</td>
+                                    <td class="text-end">{{ consume.consumed_food.fats|floatformat:2 }}</td>
+                                    <td class="text-end">{{ consume.consumed_food.calories }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot class="table-group-divider">
+                            <tr>
+                                <th scope="row"></th>
+                                <td class="text-left fw-bold">TOTAL</td>
+                                <td class="text-end fw-bold">{{ total_carbs|floatformat:2 }} g</td>
+                                <td class="text-end fw-bold">{{ total_proteins|floatformat:2 }} g</td>
+                                <td class="text-end fw-bold">{{ total_fats|floatformat:2 }} g</td>
+                                <td class="text-end fw-bold">{{ total_calories }} Kcal</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
-
     </div>
 {% endblock content %}
